@@ -59,64 +59,29 @@ button{border:0;border-radius:6px;padding:9px 14px;font-weight:600;cursor:pointe
 </section>
 </div>
 
-<script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script>
 <script>
 const tasks=[
-{q:"Display the school greeting shown.",out:"Hello Sunway School",code:"print(\"Hello Sunway School\")",check:o=>o.trim()==="Hello Sunway School"},
-{q:"Create a variable called name containing “Sunway School” and print the value.",out:"Sunway School",code:"name = \"Sunway School\"
-print(name)",check:o=>o.trim()==="Sunway School"},
-{q:"Create two variables for the numbers 12 and 5, add them, and print the result.",out:"17",code:"a = 12
-b = 5
-print(a + b)",check:o=>o.trim()==="17"},
-{q:"Write a program to calculate a value.  Ask for a number and print its value multiplied by 10. Test it using the input shown.",out:"70",input:"7",code:'number = int(input())\nprint(number * 10)',check:o=>o.trim()==="70"},
-{q:"Write a program. Ask for the school name and print the greeting shown. Test it using the input shown.",out:"Hello Sunway School!",input:"Sunway School",code:"name = input()
-print(\"Hello, \" + name + \"!\")",check:o=>o.trim()==="Hello Sunway School!"},
-{q:"Check an assessment mark. Ask for a mark. If the mark is 50 or more, print “Pass”; otherwise print “Fail”. Test using the input shown.",out:"Pass",input:"72",code:'mark = int(input())\nif mark >= 50:\n    print("Pass")\nelse:\n    print("Fail")',check:o=>o.trim()==="Pass"},
-{q:"Write a program that classifies a result. Ask for a number. Print “Positive”, “Negative” or “Zero” as appropriate. Test using the input shown.",out:"Negative",input:"-4",code:'number = int(input())\nif number > 0:\n    print("Positive")\nelif number < 0:\n    print("Negative")\nelse:\n    print("Zero")',check:o=>o.trim()==="Negative"},
+{q:"Print the message shown.",out:"Hello Sunway International School",code:'print("Hello Sunway International School")',check:o=>o.trim()==="Hello Sunway International School"},
+{q:"Create a variable called name containing “Alex” and print the value.",out:"Alex",code:'name = "Alex"\nprint(name)',check:o=>o.trim()==="Alex"},
+{q:"Create variables for 12 and 5, add them, and print the result.",out:"17",code:"a = 12\nb = 5\nprint(a + b)",check:o=>o.trim()==="17"},
+{q:"Ask for a number and print its value multiplied by 10. Test it using the input shown.",out:"70",input:"7",code:'number = int(input())\nprint(number * 10)',check:o=>o.trim()==="70"},
+{q:"Ask for a name and print the greeting shown. Test it using the input shown.",out:"Hello, Maya!",input:"Maya",code:'name = input()\nprint("Hello, " + name + "!")',check:o=>o.trim()==="Hello, Maya!"},
+{q:"Ask for a mark. If the mark is 50 or more, print “Pass”; otherwise print “Fail”. Test using the input shown.",out:"Pass",input:"72",code:'mark = int(input())\nif mark >= 50:\n    print("Pass")\nelse:\n    print("Fail")',check:o=>o.trim()==="Pass"},
+{q:"Ask for a number. Print “Positive”, “Negative” or “Zero” as appropriate. Test using the input shown.",out:"Negative",input:"-4",code:'number = int(input())\nif number > 0:\n    print("Positive")\nelif number < 0:\n    print("Negative")\nelse:\n    print("Zero")',check:o=>o.trim()==="Negative"},
 {q:"Use a for loop to print the numbers 1 to 5, one per line.",out:"1\n2\n3\n4\n5",code:"for number in range(1, 6):\n    print(number)",check:o=>o.trim()==="1\\n2\\n3\\n4\\n5"},
-{q:"Calculate the total of a sequence of values. Use a loop to calculate and print the total of the numbers 1 to 10.",out:"55",code:"total = 0\nfor number in range(1, 11):\n    total = total + number\nprint(total)",check:o=>o.trim()==="55"},
-{q:"Count how many of five entered numbers are above 10. Ask for five numbers and count how many are greater than 10. Test using the inputs shown.",out:"3",input:"4, 12, 17, 8, 21",code:'count = 0\nfor i in range(5):\n    number = int(input())\n    if number > 10:\n        count = count + 1\nprint(count)',check:o=>o.trim()==="3"},
-{q:"Process the school name. Print the first and last characters of “Sunway School”.",out:"Sl",code:"word = \"Sunway School\"
-print(word[0] + word[-1])",check:o=>o.trim()==="Sl"},
-{q:"Measure the length of the school name. Print the length of “Sunway School”.",out:"12",code:"word = \"Sunway School\"
-print(len(word))",check:o=>o.trim()==="6"},
-{q:"Prepare a school name for display. Convert “Sunway International School” to uppercase and print it.",out:"SUNWAY INTERNATIONAL SCHOOL",code:"text = \"Sunway International School\"
-print(text.upper())",check:o=>o.trim()==="SUNWAY INTERNATIONAL SCHOOL"},
-{q:"Work with a list of school year groups. Create a list containing 7, 8, 9, 10. Print the third item.",out:"9",code:"numbers = [7, 8, 9, 10]
-print(numbers[2])",check:o=>o.trim()==="9"},
-{q:"Work with a list of assessment marks. Create a list of four marks and print the highest mark.",out:"87",code:"marks = [54, 72, 87, 61]\nprint(max(marks))",check:o=>o.trim()==="87"},
-{q:"Analyse a list of results. Use a loop to calculate and print the total of the values in the list.",out:"150",code:"numbers = [20, 35, 40, 55]\ntotal = 0\nfor number in numbers:\n    total = total + number\nprint(total)",check:o=>o.trim()==="150"},
-{q:"Write a reusable function. Create a function called double that takes a number and returns twice its value. Call it with 9 and print the result.",out:"18",code:"def double(number):\n    return number * 2\n\nprint(double(9))",check:o=>o.trim()==="18"},
-{q:"Check whether a number is even. Create a function called is_even that returns True when a number is even and False otherwise. Print the result for 14.",out:"True",code:"def is_even(number):\n    return number % 2 == 0\n\nprint(is_even(14))",check:o=>o.trim()==="True"},
-{q:"Work with a 2D grid of values. Create a 2D list representing the grid shown. Use nested loops to print every value on its own line.",out:"1\n2\n3\n4\n5\n6",code:"grid = [[1, 2, 3], [4, 5, 6]]\nfor row in grid:\n    for value in row:\n        print(value)",check:o=>o.trim()==="1\\n2\\n3\\n4\\n5\\n6"},
-{q:"Final challenge: write a function called grade that accepts an assessment mark and returns A for 80+, B for 70–79, C for 60–69 and F below 60. Use a loop to process the marks in the list and print each grade.",out:"A\nB\nC\nF",code:'def grade(mark):\n    if mark >= 80:\n        return "A"\n    elif mark >= 70:\n        return "B"\n    elif mark >= 60:\n        return "C"\n    else:\n        return "F"\n\nmarks = [85, 74, 63, 42]\nfor mark in marks:\n    print(grade(mark))',check:o=>o.trim()==="A\\nB\\nC\\nF"}
+{q:"Use a loop to calculate and print the total of the numbers 1 to 10.",out:"55",code:"total = 0\nfor number in range(1, 11):\n    total = total + number\nprint(total)",check:o=>o.trim()==="55"},
+{q:"Ask for five numbers and count how many are greater than 10. Test using the inputs shown.",out:"3",input:"4, 12, 17, 8, 21",code:'count = 0\nfor i in range(5):\n    number = int(input())\n    if number > 10:\n        count = count + 1\nprint(count)',check:o=>o.trim()==="3"},
+{q:"Print the first and last characters of the word shown.",out:"Cn",code:'word = "Computer"\nprint(word[0] + word[-1])',check:o=>o.trim()==="Cn"},
+{q:"Print the length of the word “Cambridge”.",out:"9",code:'word = "Cambridge"\nprint(len(word))',check:o=>o.trim()==="9"},
+{q:"Convert the text shown to uppercase and print it.",out:"COMPUTER SCIENCE",code:'text = "Computer Science"\nprint(text.upper())',check:o=>o.trim()==="COMPUTER SCIENCE"},
+{q:"Create a list containing 10, 20, 30, 40. Print the third item.",out:"30",code:"numbers = [10, 20, 30, 40]\nprint(numbers[2])",check:o=>o.trim()==="30"},
+{q:"Create a list of four marks and print the highest mark.",out:"87",code:"marks = [54, 72, 87, 61]\nprint(max(marks))",check:o=>o.trim()==="87"},
+{q:"Use a loop to calculate and print the total of the values in the list.",out:"150",code:"numbers = [20, 35, 40, 55]\ntotal = 0\nfor number in numbers:\n    total = total + number\nprint(total)",check:o=>o.trim()==="150"},
+{q:"Create a function called double that takes a number and returns twice its value. Call it with 9 and print the result.",out:"18",code:"def double(number):\n    return number * 2\n\nprint(double(9))",check:o=>o.trim()==="18"},
+{q:"Create a function called is_even that returns True when a number is even and False otherwise. Print the result for 14.",out:"True",code:"def is_even(number):\n    return number % 2 == 0\n\nprint(is_even(14))",check:o=>o.trim()==="True"},
+{q:"Create a 2D list representing the grid shown. Use nested loops to print every value on its own line.",out:"1\n2\n3\n4\n5\n6",code:"grid = [[1, 2, 3], [4, 5, 6]]\nfor row in grid:\n    for value in row:\n        print(value)",check:o=>o.trim()==="1\\n2\\n3\\n4\\n5\\n6"},
+{q:"Final challenge: write a function called grade that accepts a mark and returns A for 80+, B for 70–79, C for 60–69 and F below 60. Use a loop to process the marks in the list and print each grade.",out:"A\nB\nC\nF",code:'def grade(mark):\n    if mark >= 80:\n        return "A"\n    elif mark >= 70:\n        return "B"\n    elif mark >= 60:\n        return "C"\n    else:\n        return "F"\n\nmarks = [85, 74, 63, 42]\nfor mark in marks:\n    print(grade(mark))',check:o=>o.trim()==="A\\nB\\nC\\nF"}
 ];
-
-const hiddenTests=[[{"i": [], "o": "Hello Sunway School"}], [{"i": [], "o": "Sunway School"}], [{"i": [], "o": "17"}], [{"i": ["7"], "o": "70"}, {"i": ["4"], "o": "40"}, {"i": ["12"], "o": "120"}], [{"i": ["Sunway School"], "o": "Hello Sunway School!"}, {"i": ["SISKL"], "o": "Hello SISKL!"}, {"i": ["Cambridge"], "o": "Hello Cambridge!"}], [{"i": ["72"], "o": "Pass"}, {"i": ["49"], "o": "Fail"}, {"i": ["50"], "o": "Pass"}, {"i": ["0"], "o": "Fail"}], [{"i": ["8"], "o": "Positive"}, {"i": ["-3"], "o": "Negative"}, {"i": ["0"], "o": "Zero"}], [{"i": [], "o": "1\n2\n3\n4\n5"}], [{"i": [], "o": "55"}], [{"i": ["4,12,17,8,21"], "o": "3"}, {"i": ["1,2,3,4,5"], "o": "0"}, {"i": ["11,12,13,14,15"], "o": "5"}], [{"i": ["Sunway School"], "o": "Sl"}, {"i": ["SISKL"], "o": "SL"}, {"i": ["Cambridge"], "o": "Ce"}], [{"i": ["Sunway School"], "o": "12"}, {"i": ["SISKL"], "o": "5"}, {"i": ["Cambridge"], "o": "9"}], [{"i": ["Sunway International School"], "o": "SUNWAY INTERNATIONAL SCHOOL"}, {"i": ["SISKL"], "o": "SISKL"}, {"i": ["Computer Science"], "o": "COMPUTER SCIENCE"}], [{"i": ["7,8,9,10"], "o": "9"}, {"i": ["6,7,8,9"], "o": "8"}, {"i": ["10,11,12,13"], "o": "12"}], [{"i": ["54,72,87,61"], "o": "87"}, {"i": ["12,95,41,63"], "o": "95"}], [{"i": ["20,35,40,55"], "o": "150"}, {"i": ["10,10,10,10"], "o": "40"}], [{"i": ["9"], "o": "18"}, {"i": ["4"], "o": "8"}], [{"i": ["14"], "o": "True"}, {"i": ["13"], "o": "False"}], [{"i": ["1,2,3,4,5,6"], "o": "1\n2\n3\n4\n5\n6"}, {"i": ["7,8,9,10"], "o": "7\n8\n9\n10"}], [{"i": ["85,74,63,42"], "o": "A\nB\nC\nF"}, {"i": ["91,79,68,55"], "o": "A\nB\nC\nF"}]];;
-
-const sourceRequirements = [
-  [/print\s*\(/i],
-  [/\bname\s*=/i, /print\s*\(\s*name\s*\)/i],
-  [/\ba\s*=/i, /\bb\s*=/i, /a\s*\+\s*b|b\s*\+\s*a/i],
-  [/\binput\s*\(/i, /\bnumber\b/i, /\*\s*10/i],
-  [/\binput\s*\(/i, /\bname\b/i],
-  [/\binput\s*\(/i, /\bif\b/i, /\belse\b/i, />=\s*50/i],
-  [/\binput\s*\(/i, /\bif\b/i, /\belif\b/i, /\belse\b/i],
-  [/\bfor\b/i, /\brange\s*\(\s*1\s*,\s*6\s*\)/i],
-  [/\bfor\b/i, /\btotal\b/i, /total\s*=\s*total\s*\+/i],
-  [/\binput\s*\(/i, /\bfor\b/i, /\bcount\b/i, />\s*10/i],
-  [/\bword\s*=/i, /\[\s*0\s*\]/i, /\[\s*-1\s*\]/i],
-  [/\blen\s*\(/i],
-  [/\bupper\s*\(\s*\)/i],
-  [/\bnumbers\s*=/i, /\[\s*2\s*\]/i],
-  [/\bmarks\s*=/i, /\bmax\s*\(/i],
-  [/\bfor\b/i, /\btotal\b/i],
-  [/\bdef\s+double\s*\(/i, /\breturn\b/i],
-  [/\bdef\s+is_even\s*\(/i, /%\s*2/i, /\breturn\b/i],
-  [/\[\s*\[/i, /\bfor\b/i, /\bfor\b/i],
-  [/\bdef\s+grade\s*\(/i, /\bfor\b/i, /\bif\b/i, /\belif\b/i]
-];
-
 
 let n=0,pyodide=null,running=false;
 let score=0,taskScored=false,revealUsedForTask=false;
@@ -159,50 +124,13 @@ def input(prompt=""):
  }catch(err){output.textContent=String(err);return null}
  finally{running=false}
 }
-
 async function checkCode(){
- if(!editor.value.trim()){
-  feedback.className="feedback bad";
-  feedback.textContent="✗ Enter some Python first.";
-  return;
- }
- const code=editor.value;
- const reqs=sourceRequirements[n]||[];
- for(const req of reqs){
-  if(!req.test(code)){
-   feedback.className="feedback bad";
-   feedback.textContent="✗ Your code does not yet use the required Python technique for this task.";
-   return;
-  }
- }
- const tests=hiddenTests[n]||[{i:input.value,o:tasks[n].out}];
- for(const test of tests){
-  const old=input.value;
-  input.value=(test.i||[]).join(", ");
-  const out=await executePython();
-  input.value=old;
-  if(out===null){
-   feedback.className="feedback bad";
-   feedback.textContent="✗ Your program produced an error.";
-   return;
-  }
-  const normalise=s=>String(s).replace(/\r\n/g,"\n").trim();
-  if(normalise(out)!==normalise(test.o)){
-   feedback.className="feedback bad";
-   feedback.textContent="✗ Not quite. Your code does not work for every hidden test case.";
-   return;
-  }
- }
- awardPoints();
- feedback.className="feedback good";
- feedback.textContent=`✓ Correct. +${revealUsedForTask?1:3} points`;
- if(n<tasks.length-1){
-  setTimeout(()=>{n++;loadTask()},650);
- }else{
-  feedback.textContent=`✓ All 20 tasks completed! Score: ${score}/60`;
- }
+ if(!editor.value.trim()){feedback.className="feedback bad";feedback.textContent="✗ Enter some Python first.";return}
+ const out=await executePython();
+ if(out===null){feedback.className="feedback bad";feedback.textContent="✗ Your program produced an error.";return}
+ if(tasks[n].check(out)){awardPoints();feedback.className="feedback good";feedback.textContent=`✓ Correct. +${revealUsedForTask?1:3} points`;if(n<tasks.length-1)setTimeout(()=>{n++;loadTask()},650);else feedback.textContent=`✓ All 20 tasks completed! Score: ${score}/60`}
+ else{feedback.className="feedback bad";feedback.textContent="✗ Not quite. Compare your output with the target."}
 }
-
 document.querySelector(".run").onclick=executePython;
 document.querySelector(".check").onclick=checkCode;
 document.getElementById("resetBtn").onclick=()=>{editor.value="";output.textContent="";feedback.className="feedback muted";feedback.textContent="Type your Python and click Run Python."};
@@ -222,19 +150,34 @@ async function boot(){
  status.textContent="Loading Python...";
  feedback.className="feedback muted";
  feedback.textContent="Loading the Python engine. This can take a few seconds the first time.";
- try{
-  if(typeof loadPyodide !== "function") throw new Error("Pyodide script did not load");
-  pyodide=await loadPyodide({indexURL:"https://cdn.jsdelivr.net/pyodide/v0.27.7/full/"});
-  pyodide.runPython("import sys, io");
-  status.textContent="Python ready";
-  feedback.className="feedback muted";
-  feedback.textContent="Python is ready. Type your solution.";
- }catch(e){
-  status.textContent="Python failed to load";
-  feedback.className="feedback bad";
-  feedback.textContent="Python could not load. If you opened this HTML file directly, use a local web server or open the game from its hosted page. Error: "+(e?.message||e);
-  console.error(e);
+ const urls=[
+  "https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js",
+  "https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"
+ ];
+ let lastError=null;
+ for(const url of urls){
+  try{
+   const s=document.createElement("script");
+   s.src=url;
+   s.async=true;
+   await new Promise((resolve,reject)=>{
+    const timer=setTimeout(()=>reject(new Error("Python engine download timed out")),30000);
+    s.onload=()=>{clearTimeout(timer);resolve()};
+    s.onerror=()=>{clearTimeout(timer);reject(new Error("Python engine script could not be downloaded"))};
+    document.head.appendChild(s);
+   });
+   if(typeof loadPyodide!=="function") throw new Error("Python engine loaded but could not be started");
+   pyodide=await loadPyodide({indexURL:"https://cdn.jsdelivr.net/pyodide/v0.27.7/full/"});
+   status.textContent="Python ready";
+   feedback.className="feedback muted";
+   feedback.textContent="Python is ready. Type your solution.";
+   return;
+  }catch(e){lastError=e;}
  }
+ status.textContent="Python failed to load";
+ feedback.className="feedback bad";
+ feedback.textContent="Python could not load in this browser. If you are opening this inside Google Sites, open the game directly in a new browser tab and try again.";
+ console.error(lastError);
 }
 loadTask();boot();
 </script>
