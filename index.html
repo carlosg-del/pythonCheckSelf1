@@ -62,23 +62,23 @@ button{border:0;border-radius:6px;padding:9px 14px;font-weight:600;cursor:pointe
 <script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script>
 <script>
 const tasks=[
-{q:"Display the school greeting shown.",out:"Hello, Sunway!",code:"print(\"Hello, Sunway!\")",check:o=>o.trim()==="Hello, Sunway!"},
-{q:"Create a variable called name containing “SISKL” and print the value.",out:"SISKL",code:"name = \"SISKL\"
-print(name)",check:o=>o.trim()==="SISKL"},
+{q:"Display the school greeting shown.",out:"Hello Sunway School",code:"print(\"Hello Sunway School\")",check:o=>o.trim()==="Hello Sunway School"},
+{q:"Create a variable called name containing “Sunway School” and print the value.",out:"Sunway School",code:"name = \"Sunway School\"
+print(name)",check:o=>o.trim()==="Sunway School"},
 {q:"Create two variables for the numbers 12 and 5, add them, and print the result.",out:"17",code:"a = 12
 b = 5
 print(a + b)",check:o=>o.trim()==="17"},
 {q:"Write a program to calculate a value.  Ask for a number and print its value multiplied by 10. Test it using the input shown.",out:"70",input:"7",code:'number = int(input())\nprint(number * 10)',check:o=>o.trim()==="70"},
-{q:"Write a program. Ask for the school name and print the greeting shown. Test it using the input shown.",out:"Hello, SISKL!",input:"SISKL",code:"name = input()
-print(\"Hello, \" + name + \"!\")",check:o=>o.trim()==="Hello, SISKL!"},
+{q:"Write a program. Ask for the school name and print the greeting shown. Test it using the input shown.",out:"Hello Sunway School!",input:"Sunway School",code:"name = input()
+print(\"Hello, \" + name + \"!\")",check:o=>o.trim()==="Hello Sunway School!"},
 {q:"Check an assessment mark. Ask for a mark. If the mark is 50 or more, print “Pass”; otherwise print “Fail”. Test using the input shown.",out:"Pass",input:"72",code:'mark = int(input())\nif mark >= 50:\n    print("Pass")\nelse:\n    print("Fail")',check:o=>o.trim()==="Pass"},
 {q:"Write a program that classifies a result. Ask for a number. Print “Positive”, “Negative” or “Zero” as appropriate. Test using the input shown.",out:"Negative",input:"-4",code:'number = int(input())\nif number > 0:\n    print("Positive")\nelif number < 0:\n    print("Negative")\nelse:\n    print("Zero")',check:o=>o.trim()==="Negative"},
 {q:"Use a for loop to print the numbers 1 to 5, one per line.",out:"1\n2\n3\n4\n5",code:"for number in range(1, 6):\n    print(number)",check:o=>o.trim()==="1\\n2\\n3\\n4\\n5"},
 {q:"Calculate the total of a sequence of values. Use a loop to calculate and print the total of the numbers 1 to 10.",out:"55",code:"total = 0\nfor number in range(1, 11):\n    total = total + number\nprint(total)",check:o=>o.trim()==="55"},
 {q:"Count how many of five entered numbers are above 10. Ask for five numbers and count how many are greater than 10. Test using the inputs shown.",out:"3",input:"4, 12, 17, 8, 21",code:'count = 0\nfor i in range(5):\n    number = int(input())\n    if number > 10:\n        count = count + 1\nprint(count)',check:o=>o.trim()==="3"},
-{q:"Process the school code name. Print the first and last characters of “SISKL”.",out:"SL",code:"word = \"SISKL\"
-print(word[0] + word[-1])",check:o=>o.trim()==="SL"},
-{q:"Measure the length of the school name. Print the length of “Sunway”.",out:"6",code:"word = \"Sunway\"
+{q:"Process the school name. Print the first and last characters of “Sunway School”.",out:"Sl",code:"word = \"Sunway School\"
+print(word[0] + word[-1])",check:o=>o.trim()==="Sl"},
+{q:"Measure the length of the school name. Print the length of “Sunway School”.",out:"12",code:"word = \"Sunway School\"
 print(len(word))",check:o=>o.trim()==="6"},
 {q:"Prepare a school name for display. Convert “Sunway International School” to uppercase and print it.",out:"SUNWAY INTERNATIONAL SCHOOL",code:"text = \"Sunway International School\"
 print(text.upper())",check:o=>o.trim()==="SUNWAY INTERNATIONAL SCHOOL"},
@@ -92,7 +92,7 @@ print(numbers[2])",check:o=>o.trim()==="9"},
 {q:"Final challenge: write a function called grade that accepts an assessment mark and returns A for 80+, B for 70–79, C for 60–69 and F below 60. Use a loop to process the marks in the list and print each grade.",out:"A\nB\nC\nF",code:'def grade(mark):\n    if mark >= 80:\n        return "A"\n    elif mark >= 70:\n        return "B"\n    elif mark >= 60:\n        return "C"\n    else:\n        return "F"\n\nmarks = [85, 74, 63, 42]\nfor mark in marks:\n    print(grade(mark))',check:o=>o.trim()==="A\\nB\\nC\\nF"}
 ];
 
-const hiddenTests=[[{"i": [], "o": "Hello, Sunway!"}], [{"i": [], "o": "SISKL"}], [{"i": [], "o": "17"}], [{"i": ["7"], "o": "70"}, {"i": ["4"], "o": "40"}, {"i": ["12"], "o": "120"}], [{"i": ["SISKL"], "o": "Hello, SISKL!"}, {"i": ["SIS"], "o": "Hello, SIS!"}, {"i": ["Sunway"], "o": "Hello, Sunway!"}], [{"i": ["72"], "o": "Pass"}, {"i": ["49"], "o": "Fail"}, {"i": ["50"], "o": "Pass"}, {"i": ["0"], "o": "Fail"}], [{"i": ["8"], "o": "Positive"}, {"i": ["-3"], "o": "Negative"}, {"i": ["0"], "o": "Zero"}], [{"i": [], "o": "1\n2\n3\n4\n5"}], [{"i": [], "o": "55"}], [{"i": ["4,12,17,8,21"], "o": "3"}, {"i": ["1,2,3,4,5"], "o": "0"}, {"i": ["11,12,13,14,15"], "o": "5"}], [{"i": ["SISKL"], "o": "SL"}, {"i": ["Sunway"], "o": "Sy"}, {"i": ["Cambridge"], "o": "Ce"}], [{"i": ["Sunway"], "o": "6"}, {"i": ["SISKL"], "o": "5"}, {"i": ["Cambridge"], "o": "9"}], [{"i": ["Sunway International School"], "o": "SUNWAY INTERNATIONAL SCHOOL"}, {"i": ["SISKL"], "o": "SISKL"}, {"i": ["Computer Science"], "o": "COMPUTER SCIENCE"}], [{"i": ["7,8,9,10"], "o": "9"}, {"i": ["6,7,8,9"], "o": "8"}, {"i": ["10,11,12,13"], "o": "12"}], [{"i": ["54,72,87,61"], "o": "87"}, {"i": ["12,95,41,63"], "o": "95"}], [{"i": ["20,35,40,55"], "o": "150"}, {"i": ["10,10,10,10"], "o": "40"}], [{"i": ["9"], "o": "18"}, {"i": ["4"], "o": "8"}], [{"i": ["14"], "o": "True"}, {"i": ["13"], "o": "False"}], [{"i": ["1,2,3,4,5,6"], "o": "1\n2\n3\n4\n5\n6"}, {"i": ["7,8,9,10"], "o": "7\n8\n9\n10"}], [{"i": ["85,74,63,42"], "o": "A\nB\nC\nF"}, {"i": ["91,79,68,55"], "o": "A\nB\nC\nF"}]];;
+const hiddenTests=[[{"i": [], "o": "Hello Sunway School"}], [{"i": [], "o": "Sunway School"}], [{"i": [], "o": "17"}], [{"i": ["7"], "o": "70"}, {"i": ["4"], "o": "40"}, {"i": ["12"], "o": "120"}], [{"i": ["Sunway School"], "o": "Hello Sunway School!"}, {"i": ["SISKL"], "o": "Hello SISKL!"}, {"i": ["Cambridge"], "o": "Hello Cambridge!"}], [{"i": ["72"], "o": "Pass"}, {"i": ["49"], "o": "Fail"}, {"i": ["50"], "o": "Pass"}, {"i": ["0"], "o": "Fail"}], [{"i": ["8"], "o": "Positive"}, {"i": ["-3"], "o": "Negative"}, {"i": ["0"], "o": "Zero"}], [{"i": [], "o": "1\n2\n3\n4\n5"}], [{"i": [], "o": "55"}], [{"i": ["4,12,17,8,21"], "o": "3"}, {"i": ["1,2,3,4,5"], "o": "0"}, {"i": ["11,12,13,14,15"], "o": "5"}], [{"i": ["Sunway School"], "o": "Sl"}, {"i": ["SISKL"], "o": "SL"}, {"i": ["Cambridge"], "o": "Ce"}], [{"i": ["Sunway School"], "o": "12"}, {"i": ["SISKL"], "o": "5"}, {"i": ["Cambridge"], "o": "9"}], [{"i": ["Sunway International School"], "o": "SUNWAY INTERNATIONAL SCHOOL"}, {"i": ["SISKL"], "o": "SISKL"}, {"i": ["Computer Science"], "o": "COMPUTER SCIENCE"}], [{"i": ["7,8,9,10"], "o": "9"}, {"i": ["6,7,8,9"], "o": "8"}, {"i": ["10,11,12,13"], "o": "12"}], [{"i": ["54,72,87,61"], "o": "87"}, {"i": ["12,95,41,63"], "o": "95"}], [{"i": ["20,35,40,55"], "o": "150"}, {"i": ["10,10,10,10"], "o": "40"}], [{"i": ["9"], "o": "18"}, {"i": ["4"], "o": "8"}], [{"i": ["14"], "o": "True"}, {"i": ["13"], "o": "False"}], [{"i": ["1,2,3,4,5,6"], "o": "1\n2\n3\n4\n5\n6"}, {"i": ["7,8,9,10"], "o": "7\n8\n9\n10"}], [{"i": ["85,74,63,42"], "o": "A\nB\nC\nF"}, {"i": ["91,79,68,55"], "o": "A\nB\nC\nF"}]];;
 
 const sourceRequirements = [
   [/print\s*\(/i],
